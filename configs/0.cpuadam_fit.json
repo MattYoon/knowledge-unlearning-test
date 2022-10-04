@@ -1,14 +1,14 @@
 {
-    "mode": "unlearn",
+    "cpuadam": true,
+    "mode": "general_lm_eval",
     "wandb_project": "Knowledge Unlearning",
     "wandb_run_name": "example",
     "num_train_epochs": 20,
     "check_val_every_n_epoch": 1,
     "check_validation_only": false,
     "do_init_eval": true,
-    "train_set": "data/main/lm_extraction_32_0.csv",
+    "train_set": "data/main/lm_extraction_8_0.csv",
     "valid_sets": [
-        "data/main/lm_extraction_32_0.csv",
         "validation_data/lambada.csv",
         "piqa",
         "hellaswag",
@@ -23,7 +23,6 @@
         "",
         "",
         "",
-        "",
         "ARC-Easy",
         "ARC-Challenge",
         "copa",
@@ -32,7 +31,6 @@
         ""
     ],
     "valid_type_path": [
-        "target",
         "test",
         "validation",
         "validation",
@@ -44,9 +42,9 @@
         ""
     ],
     "train_batch_size": 8,
-    "eval_batch_size": 8,
-    "gradient_accumulation_steps": 2,
-    "ngpu": 2,
+    "eval_batch_size": 32,
+    "gradient_accumulation_steps": 1,
+    "ngpu": 1,
     "learning_rate": 5e-5,
     "model_name_or_path": "EleutherAI/gpt-neo-125M",
     "el_threshold": 0.0499,

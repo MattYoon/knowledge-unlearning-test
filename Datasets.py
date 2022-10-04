@@ -25,11 +25,11 @@ class Custom_Dataset(Dataset):
 
         if self.type_path == 'train':
             self.dataset = pd.read_csv(dataset_name, lineterminator='\n')
-            batch_size = self.args.train_batch_size * \
-                self.args.gradient_accumulation_steps * self.args.ngpu
-            if len(self.dataset) != batch_size:
-                raise Exception(
-                    "Effective batch size should be the same as length of train set")
+            # batch_size = self.args.train_batch_size * \
+            #     self.args.gradient_accumulation_steps * self.args.ngpu
+            # if len(self.dataset) != batch_size:
+            #     raise Exception(
+            #         "Effective batch size should be the same as length of train set")
 
         else:
             if '.csv' not in self.dataset_name:  # load from huggingface hub

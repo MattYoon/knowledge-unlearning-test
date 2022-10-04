@@ -552,10 +552,16 @@ class Neo(pl.LightningModule):
                 lr=self.hparams.learning_rate,
                 betas=(0.9, 0.98))
         else:
-            optimizer = torch.optim.Adam(
-                parameters,
-                lr=self.hparams.learning_rate,
-                betas=(0.9, 0.98))
+            if self.hparams.cpuadam:
+                optimizer = deepspeed.ops.adam.DeepSpeedCPUAdam(
+                    parameters,
+                    lr=self.hparams.learning_rate,
+                    betas=(0.9, 0.98))
+            else:
+                optimizer = torch.optim.Adam(
+                    parameters,
+                    lr=self.hparams.learning_rate,
+                    betas=(0.9, 0.98))
         return [optimizer]
 
     def get_dataset(self, dataset_name, tokenizer,
